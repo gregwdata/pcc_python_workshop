@@ -1,0 +1,158 @@
+df_materials = pd.DataFrame(
+    [
+        {
+            'name': 'supercrane',
+            'type': 'finished_good',
+            'inputs': ['copy_paper','staple'],
+            'recipe': ['S_tl','C_n','G1'],
+            'sales_price': 24,
+        },
+        {
+            'name': 'birthday_card',
+            'type': 'finished_good',
+            'inputs': ['folded_card','staple'],
+            'recipe': ['F_h','S_tl','G1'],
+            'sales_price': 8.5,
+        },
+        {
+            'name': 'holey_folder',
+            'type': 'finished_good',
+            'inputs': ['folded_card','staple'],
+            'recipe': ['S_tl','P_h','P_h','P_h','S_bl'],
+            'sales_price': 9.10,
+        },
+        {
+            'name': 'folded_card',
+            'type': 'intermediate_product',
+            'inputs': ['construction_paper'],
+            'recipe': ['F_h'],
+        },
+        {
+            'name': 'triangle',
+            'type': 'finished_good',
+            'inputs': ['copy_paper'],
+            'recipe': ['F_d','G1'],
+            'sales_price': 16.2,
+        },
+        {
+            'name': '2_ply_circle',
+            'type': 'finished_good',
+            'inputs': ['copy_paper'],
+            'recipe': ['C_c','G1'],
+            'sales_price': 37,
+        },
+        {
+            'name': 'copy_paper',
+            'type': 'raw_material',
+            'inputs': [],
+            'recipe': [],
+            'initial_qty': 100
+        },
+        {
+            'name': 'construction_paper',
+            'type': 'raw_material',
+            'inputs': [],
+            'recipe': [],
+            'initial_qty': 25
+        },
+        {
+            'name': 'staple',
+            'type': 'raw_material',
+            'inputs': [],
+            'recipe': [],
+            'initial_qty': 200
+        },
+    ]
+)
+
+
+df_operations = pd.DataFrame(
+    [
+        {
+            'name': 'Staple Top Left Corner',
+            'id' : 'S_tl',
+            'resources': ['stapler'],
+        },
+        {
+            'name': 'Staple Bottom Left Corner',
+            'id' : 'S_bl',
+            'resources': ['stapler'],
+        },
+        {
+            'name': 'Glue',
+            'id':'G1',
+            'resources': ['glue'],
+        },
+        {
+            'name': 'Fold Diagonal',
+            'id':'F_d',
+            'resources': ['folding_station'],
+        },
+        {
+            'name': 'Cut Notch',
+            'id':'C_n',
+            'resources': ['scissors'],
+        },
+        {
+            'name': 'Cut Circle',
+            'id':'C_c',
+            'resources': ['scissors'],
+        },
+        {
+            'name': 'Punch Hole',
+            'id':'P_h',
+            'resources': ['hole_punch'],
+        },
+        {
+            'name': 'Fold in Half',
+            'id':'F_h',
+            'resources': ['folding_station'],
+        },
+    ]
+)
+
+df_resources = pd.DataFrame(
+    [
+        {
+            'name': 'stapler',
+            'num_units' : 1,
+            'num_operators': 2,
+            'capacity_per_unit': 1,
+            'setup_time': 0.25,
+            'cycle_time_mean': 1.8,
+            'cycle_time_std': .29,
+        },
+        {
+            'name': 'glue',
+            'num_units' : 4,
+            'setup_time': 2,
+            'num_operators': 1,
+            'cycle_time_mean': 4.1,
+            'cycle_time_std': 1,
+        },
+        {
+            'name': 'scissors',
+            'num_units' : 3,
+            'setup_time': 1,
+            'num_operators': 1,
+            'cycle_time_mean': 2,
+            'cycle_time_std': 1,
+        },
+        {
+            'name': 'folding_station',
+            'num_units' : 99, # we don't actually have 99 units, but since no physical equipment is required for folding, it is only constrained by available operators
+            'setup_time': 1,
+            'num_operators': 1,
+            'cycle_time_mean': 5.22,
+            'cycle_time_std': .8,
+        },
+        {
+            'name': 'hole_punch',
+            'num_units' : 1,
+            'setup_time': 1,
+            'num_operators': 1,
+            'cycle_time_mean': 5,
+            'cycle_time_std': .81,
+        },
+    ]
+)
